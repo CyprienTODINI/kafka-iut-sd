@@ -11,8 +11,10 @@ producer = KafkaProducer(
     sasl_mechanism='SCRAM-SHA-256',
     security_protocol='SASL_PLAINTEXT',
     sasl_plain_username='user1',
-    sasl_plain_password='MoKZGLP3Fh'
+    sasl_plain_password='MoKZGLP3Fh',
+    value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
+
 #producer = KafkaProducer(
 #    bootstrap_servers=[broker],
 #    value_serializer=lambda v: json.dumps(v).encode('utf-8')
