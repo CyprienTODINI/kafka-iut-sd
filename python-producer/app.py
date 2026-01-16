@@ -5,7 +5,7 @@ import datetime
 
 # Define the Kafka broker and topic
 broker = 'kafka.todini2u-dev.svc.cluster.local:9092'
-topic = 'my-first-topic'
+topic = 'partitionned'
 
 # Create a Kafka producer
 producer = KafkaProducer(
@@ -38,4 +38,3 @@ while True:
     print(f"Message {i} sent to topic {topic}")
 
     i += 1
-    time.sleep(1)
