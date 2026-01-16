@@ -15,11 +15,6 @@ producer = KafkaProducer(
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 
-#producer = KafkaProducer(
-#    bootstrap_servers=[broker],
-#    value_serializer=lambda v: json.dumps(v).encode('utf-8')
-#)
-
 # Define the message to send
 message = {
     'key': 'this-is-a-key',
