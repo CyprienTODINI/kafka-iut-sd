@@ -1,5 +1,7 @@
 from kafka import KafkaProducer
 import json
+import time
+import datetime
 
 # Define the Kafka broker and topic
 broker = 'kafka.todini2u-dev.svc.cluster.local:9092'
@@ -15,16 +17,25 @@ producer = KafkaProducer(
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 
-# Define the message to send
-message = {
-    'key': 'this-is-a-key',
-    'value': 'this-is-a-value'
-}
 
-# Send the message to the Kafka topic
-producer.send(topic, value=message)
+i = 1
+while True:
+    today = datetime.datetime.now()
 
-# Ensure all messages are sent before closing the producer
-producer.flush()
 
-print(f"Message sent to topic {topic}")
+    # Define the message to send
+    message = {
+        'key': 'tiens-une-autre-clee',
+        'value': f'{i}',
+        'time_stamps': f'{today.strftime("%d/%m/%Y - %H:%M:%S")}'
+    }
+    # Send the message to the Kafka topic
+    producer.send(topic, value=message)
+
+    # Ensure all messages are sent before closing the producer
+    producer.flush()
+
+    print(f"Message {i} sent to topic {topic}")
+
+    i += 1
+    time.sleep(1)
