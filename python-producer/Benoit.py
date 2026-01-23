@@ -4,7 +4,7 @@ import time
 import datetime
 
 # Define the Kafka broker and topic
-broker = 'kafka.todini2u-dev.svc.cluster.local:9092'
+broker = 'my-kafka.todini2u-dev.svc.cluster.local:9092'
 topic = 'partitionned'
 
 # Create a Kafka producer
@@ -13,7 +13,7 @@ producer = KafkaProducer(
     sasl_mechanism='SCRAM-SHA-256',
     security_protocol='SASL_PLAINTEXT',
     sasl_plain_username='user1',
-    sasl_plain_password='MoKZGLP3Fh',
+    sasl_plain_password='9BOLdamB0c',
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 
@@ -25,7 +25,7 @@ while True:
 
     # Define the message to send
     message = {
-        'key': 'tiens-une-autre-clee',
+        'key': 'tiens-une-clee',
         'value': f'{i}',
         'time_stamps': f'{today.strftime("%d/%m/%Y - %H:%M:%S")}'
     }
@@ -37,4 +37,5 @@ while True:
 
     print(f"Message {i} sent to topic {topic}")
 
+    time.sleep(5)
     i += 1

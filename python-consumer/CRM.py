@@ -2,7 +2,7 @@ from kafka import KafkaConsumer
 import json
 
 # Define the Kafka broker and topic
-broker = 'kafka.todini2u-dev.svc.cluster.local:9092'
+broker = 'my-kafka.todini2u-dev.svc.cluster.local:9092'
 topic = 'partitionned'
 
 # Create a Kafka consumer
@@ -12,7 +12,7 @@ consumer = KafkaConsumer(
     sasl_mechanism='SCRAM-SHA-256',
     security_protocol='SASL_PLAINTEXT',
     sasl_plain_username='user1',
-    sasl_plain_password='MoKZGLP3Fh',
+    sasl_plain_password='9BOLdamB0c',
     auto_offset_reset='earliest',
     enable_auto_commit=True,
     group_id='CRM'
